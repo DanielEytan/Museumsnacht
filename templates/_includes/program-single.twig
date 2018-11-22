@@ -1,0 +1,47 @@
+<section class="program program--single">
+		<ul class="program__list program__list--selection">
+			{% set parent = craft.entries.ancestorOf(entry).level(1).first() %}
+			<li class="program__list__event">
+				<section class="institution">
+					{% for linie in parent.shuttleLine %}
+					<span class="suttle-line" style="color: {{linie.color}}"> {{ parent.number }} {{ linie.title }}</span><br>
+					<a href="{{ parent.url }}">{{ parent.title }}</a><br></span>
+					{% endfor %}
+				</section>
+				<h1>{{ entry.title }}</h1>
+				{% for time in entry.time%}
+				<time>
+					{% switch time.type %}
+					{% case "setTimes" %}
+					{{ time.start | date("h:i") }} (Dauer: {{ time.duration }})<br>
+					{% case "continuous" %}
+					{{ time.start | date("h:i") }} – {{ time.end | date("h:i") }} (Durchgehend)
+					{% case "iterating" %}									
+					{{ time.start | date("h:i") }} – {{ time.end | date("h:i") }} ({{ time.frequency }}, Dauer: {{ time.duration }})
+					{% endswitch %}
+				</time>
+				{% endfor %}
+				{{ entry.description }}
+				{% if entry.additionalLang | length %}{{ entry.additionalLang }}{% endif %}
+								<br>
+				<h2><strong>Art der Veranstaltung</strong></h2>
+				<ul>
+					{% for entry in entry.kindOfEvent %}
+					<li>{{ entry.title }}</li>	
+					{% endfor %}
+				</ul><br>
+				<h2><strong>Themen und Sparten</strong></h2>
+				<ul>
+					{% for entry in entry.themes %}
+					<li>{{ entry.title }}</li>	
+					{% endfor %}
+				</ul><br>
+				<h2><strong>Sprachen</strong></h2>
+				<ul>
+					{% for entry in entry.languages %}
+					<li>{{ entry.title }}</li>	
+					{% endfor %}
+				</ul>
+			</li>
+		</ul>
+</section>

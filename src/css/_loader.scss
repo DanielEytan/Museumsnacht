@@ -1,0 +1,32 @@
+.loader {
+	background: $dark;
+	position: fixed;
+	left: 0;
+	right:0;
+	top: 0;
+	bottom:0;
+	z-index: 200;
+	display: flex;
+	align-items: center;
+  justify-content: center;
+	figure {
+		// background-color: red;
+
+		background-image: url(./../bilder/logo_weiss.svg);
+		background-blend-mode: multiply;
+	  	background-size: 10vw;
+	  	background-repeat: no-repeat;
+	  	display: block;
+	  	width: 10vw;
+	  	height: 10vw;
+	  	animation: loader 1s infinite;
+	  }
+}
+
+@keyframes loader {
+	 from { 
+            transform: rotate(0deg); 
+        } to { 
+            transform: rotate(360deg); 
+        }
+}

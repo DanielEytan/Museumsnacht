@@ -1,0 +1,136 @@
+{% extends "_layout" %}
+{% set title = "Tickets" %}
+{% set mt = "mt" %}
+{% set lang = "fr" %}
+
+{% block content %}
+<article class="microsites-language">
+	<header class="site-header">
+		{% for entry in craft.entries.section('microsites').locale('fr') %}
+		{{ entry.introMicrosites }}			
+		{% endfor %}
+	</header>
+	<nav class="microsite-nav">
+		<ul>
+			<li v-on:click="ticketToggle" v-bind:class="{ active : langTickets }">Billets</li>
+			<li v-on:click="mobilityToggle" v-bind:class="{ active : langMobility }">Mobilité</li>
+			<li v-on:click="programToggle" v-bind:class="{ active : langProgram }">Activités francophones</li>
+		</ul>
+	</nav>
+	{% for entry in craft.entries.section('tickets').locale('fr') %}
+	<section class="tickets" v-if="langTickets">
+		<div class="info-block">
+			<div>
+				{{ entry.tickets }}
+			</div>
+		</div>
+	</section>
+	{% endfor %}
+	{% for entry in craft.entries.section('mobility').locale('fr') %}
+	<section class="mobility" v-if="langMobility">
+		<div class="info-block">
+			<div>
+				{{ entry.mobility }}
+			</div>
+		</div>
+	</section>
+	{% endfor %}
+	<section class="program program--saved " v-if="langProgram">
+		{% for entry in craft.entries.section('microsites').locale('fr') %}
+		<div class="intro">{{ entry.micrositesEventsIntro }}</div>			
+		{% endfor %}
+		<ul class="program__list program__list--selection">
+			{% set category = craft.categories.slug('französisch') %}
+			{% for entry in craft.entries.section('program').relatedTo(category) %}
+			<li class="program__list__event">
+				<div>
+					{% set parent = craft.entries.ancestorOf(entry).level(1).first() %}
+					{% set shuttle = craft.categories.group('shuttleLine') %}
+					<section class="institution">
+						{% if parent.shuttleLine | length < 2 %}
+						{% for color in parent.shuttleLine %}
+						<div class="shuttle-line">
+							<div class="number"><i style="background: {{ color.color }}">{{ parent.number }}</i></div> 
+							<div class="lines"><span style="color: {{ color.color }}">  {{ color.title }}</span></div>
+						</div>
+						{% endfor %}
+						{% else %}
+						<div class="shuttle-line several">
+							<div class="number"><i style="background: black">{{ parent.number }}</i></div>
+							<div class="lines">
+
+								{% for color in parent.shuttleLine %}
+								<span style="color: {{ color.color }}"><nobr>{{ color.title }}</nobr></span>
+								{% endfor %}
+							</div>
+						</div>
+						{% endif %}
+						<h1><a href="{{ parent.url }}">{{ parent.title }}</a></h1>
+					</section>
+					<div class="program__list__event__info--wrapper flex-container">
+						<div class="time">
+							{% for time in entry.time %}
+							<div>
+								{% switch time.type %}
+
+								{% case "setTimes" %}
+								<time>{{ time.start|date("H:i")}}{% if time.duration | length %}<span><br>(Dauer: {{ time.duration }})</span>{% endif %}</time>
+								{% case "continuous" %}
+								<time> 
+									{{ time.start|date("H:i") }} – {{ time.end|date("H:i") }}
+								</time> 
+								{% case "iterating" %}
+								<time> 
+									{{ time.start|date("H:i") }} – {{ time.end|date("H:i") }} <br> 
+									({{ time.frequency }}{% if time.duration | length %}, Dauer: {{ time.duration }}{% endif %})
+								</time> 			        					        	
+								{% endswitch %}
+							</div>
+							{% endfor %}
+						</div>
+						<div class="text">
+							<h1 class="event-title">{{ entry.title }}</h1>
+							<div>{{ entry.description }}</div>
+							<div class="additional-lang">{{ entry.additionalLang }}</div>
+						</div>
+						<div class="icons">
+							{% for kindOfEvent in entry.kindOfEvent%}
+							{% if kindOfEvent.title == 'Für Kinder & Familien' %}
+							<div><span>🎠</span></div>
+							{% endif %}
+							{% endfor %}
+							{% for language in entry.languages %}
+							{% switch language.title %}
+							{% case "Deutsch" %}
+							<span class="de">🇩🇪</span>
+							{% case "English" %}
+							<span class="en">🇬🇧</span>
+							{% case "Français" %}
+							<span class="fr">🇫🇷</span>
+							{% case "Italiano" %}
+							<span class="it">🇮🇹</span>
+							{% case "Español" %}
+							<span class="sp other">🇪🇸</span>
+							{% case "Magyar" %}
+							<span class="other">🇭🇺</span>
+							{% case "Pусский" %}
+							<span class="other">🇷🇺</span>
+							{% endswitch %}
+							{% endfor %}
+						</div>
+						<ul class="categories">
+							{% for theme in entry.themes %}
+							<li> <span><nobr>{{ theme.title }}</nobr></span></li>
+							{% endfor %}
+							{% for kindOfEvent in entry.kindOfEvent %}
+							{% if kindOfEvent.title != 'Für Kinder & Familien' %}<li><span><nobr>{{ kindOfEvent.title }}</nobr></span></li>{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+</article>
+{% endblock %}

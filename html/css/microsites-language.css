@@ -1,0 +1,39 @@
+.microsites-language header h2 {
+  margin-bottom: .5em; }
+
+.microsites-language header p {
+  margin-bottom: 1em; }
+
+.microsites-language .intro h2 {
+  margin-bottom: 1em; }
+
+.microsites-language em {
+  vertical-align: .36em;
+  font-size: .8em;
+  line-height: 0; }
+
+.microsites-language > section {
+  padding-top: 2em; }
+
+.microsites-language .microsite-nav {
+  margin-top: 2em; }
+  .microsites-language .microsite-nav ul li {
+    padding: .5em;
+    color: #787878;
+    cursor: pointer; }
+    .microsites-language .microsite-nav ul li.active, .microsites-language .microsite-nav ul li:hover {
+      color: black;
+      border-bottom: solid 2px; }
+
+@media screen and (min-width: 600px) {
+  .microsites-language .microsite-nav {
+    border-bottom: solid 1px; }
+    .microsites-language .microsite-nav ul {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-pack: distribute;
+      justify-content: space-around; }
+      .microsites-language .microsite-nav ul li {
+        padding: .5em 0; } }

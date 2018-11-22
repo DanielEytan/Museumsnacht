@@ -1,0 +1,343 @@
+@font-face {
+  font-family: 'lyon-medium';
+  src: url('../fonts/LyonDisplay-Medium.woff') format('woff'), /* IE6-IE8 */
+}
+@font-face {
+  font-family: 'main-book';
+  src: url('../fonts/MainMN-Book.woff') format('woff'), /* IE6-IE8 */
+}
+@font-face {
+  font-family: 'main-eb';
+  src: url('../fonts/MainMN-ExtraBold.woff') format('woff'), /* IE6-IE8 */
+}
+
+body {
+	font-family: 'main-book', helvetica;
+	font-size: 1.1em;
+	line-height: 1.35em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	@media only screen and (min-width: $bp2) {
+		font-size: 1.15em;
+	}
+	@media only screen and (min-width: $bp4) {
+		font-size: 1.2em;
+	}
+}
+
+// Link Border Bottom
+
+// .program .adapt-program p,
+// .program .empty,
+// .visit,
+// footer#footer .contact p,
+// .program .site-header p {
+// 	a {
+// 		// border-bottom: solid 1px;
+// 		text-decoration: underline;
+
+// 		font-family: 'main-eb', helvetica;
+// 	}
+// }
+.selected-institution aside a .more {
+	text-decoration: underline;
+	font-family: 'main-eb', helvetica;
+	display: inline-block;
+}
+
+// Margins
+
+.visit h2 {
+	margin-bottom: .5em;
+}
+.visit p,
+.filter__checklists .title h2 {
+	margin-bottom: 1em;
+}
+
+
+// Font Main Extra-Bold
+.more,
+.program .institution *:not(h2),
+.share-button,
+
+.filter header,
+
+.filter__selection--wrapper,
+
+.filter,
+time,
+strong,
+header#header,
+button,
+.site-header nav,
+
+footer i,
+
+// .institutions h1.title,
+
+.institutions .suttle-line,
+.institutions--overview h1,
+
+.institutions--single h1.title,
+.institutions .visitor-infos,
+.institutions--single address,
+.institutions--single .program h2,
+
+.institutions h3,
+// .journal--single article h1,
+.journal--single h2.subtitle,
+
+.shuttle-line, 
+
+.visit h2,
+.presell-toggle,
+.home .info a,
+
+.info-block a,
+.mn-date,
+
+.link a, 
+footer h3,
+footer a,
+footer h4,
+.visit h3,
+.selected .institution,
+.program .share-program h1,
+.share-program .button,
+.share-program .button button,
+
+.share-program .mail a,
+.home .site-title h1,
+.link-with-arrow,
+.info-block h2, 
+.info-block h3,
+.info-block b,
+footer h2,
+.home .lang,
+
+// .journal .post-date,
+.journal .info-box em,
+.journal .info-box,
+nav.microsite-nav li,
+.microsites-language .intro h2,
+.journal--single .next-prev span,
+.media h2,
+.social-stream h1,
+// .stream .crt-post-footer a,
+.stream .crt-load-more a,
+.stream .crt-post-read-more a,
+.stream .crt-post-header,
+.downloads h1.block-title
+
+
+  {
+	font-family: 'main-eb', helvetica;
+}
+
+
+// Font Lyon Black
+.journal--overview .group h1,
+
+header .mn-date span,
+.program h1, .program .institution h2,
+.program-list h1,
+header h1,
+header.site-header h1,
+.food h3,
+.institutions--single .program-text,
+.institutions--overview .grid-view h2,
+.program .empty p,
+.microsites-language header h2,
+.journal--single article .lead-text p,
+.journal--single .next-prev h1
+
+
+
+
+ {
+	font-family: 'lyon-medium', times;
+}
+
+
+// Uppercase
+
+.program__list .institution h1,
+// .program .institution,
+
+// .filter header,
+.filter h2,
+
+.institutions--overview h1,
+
+.institutions--single h1.title,
+.journal--single h1.title,
+.institutions--single span strong,
+.institutions--single .program h2,
+
+section header .narrow,
+.visit h2,
+.presell-toggle,
+.journal--overview article h1,
+// .journal--single h1,
+.journal--single h2,
+header.site-header h1,
+.footerinfos,
+.visit h3,
+.selected .institution,
+.share-program h1,
+.home .site-title,
+.home .lang,
+.link-with-arrow,
+.more,
+.info-block h2,
+.info-block h3,
+// .post-date ,
+footer h2, footer h3,
+ul.main-nav li,
+nav.microsite-nav li,
+.microsites-language .intro h2,
+.link-to-main a,
+.media h2,
+.social-stream h1,
+.stream .crt-load-more a,
+.downloads h1.block-title
+
+
+
+  {
+	text-transform: uppercase;
+	letter-spacing: .025em;
+	line-height: 1em !important;
+}
+
+figcaption,
+.suttle-line,
+.address span,
+.post-date {
+	font-size: .8em;
+	line-height: 1.2em;
+
+}
+
+// Font Size M
+
+// .program h1.event-title,
+.institutions--single .program-text,
+.journal .program-list.selected h1,
+.institutions--overview .map-view .suttle-line strong,
+
+.institutions--overview .map-view h1,
+.program__list--selection li h1.event-title,
+nav.microsite-nav li,
+.journal--single .next-prev h1,
+.microsites-language header p,
+.downloads h1.block-title
+
+// .stream .crt-post-header .crt-post-fullname
+
+
+// .info-box 
+{
+	font-size: 1.25em;
+	line-height: 1.2em;
+	@media only screen and (min-width: $bp2) {
+		font-size: 1.25em;
+	}
+	@media only screen and (min-width: $bp5) {
+		font-size: 1.35em;
+	}
+}
+
+
+// Font Size L
+.program--overview .institution h1,
+
+.program--overview .institution span strong,
+.program .selected h1,
+.program .empty p,
+
+// .program li.program--event h1,
+
+.institutions--overview--grid-view h1,
+.institutions--overview--list-view h1,
+
+.institutions--overview .grid-view h2,
+
+.institutions--overview--grid-view .icons,
+.institutions--overview--grid-view span strong,
+
+.institutions--single .program h2,
+.institutions--single  h1.title,
+
+.visit h2,
+.home .info p.intro,
+
+
+.journal--single h2.subtitle,
+.share-program h1,
+.info-block h2,
+.microsites-language header h2,
+.journal--single article .lead-text,
+.microsites-language .intro h2,
+.media h2,
+
+
+footer h2 {
+	font-size: 1.25em;
+	line-height: 1.2em;
+	@media only screen and (min-width: 400px) {
+		font-size: 1.4em;
+	}
+	@media only screen and (min-width: $bp4) {
+		font-size: 1.6em;
+	}
+	@media only screen and (min-width: $bp5) {
+		font-size: 1.75em;
+	}
+}
+
+// Font-Size XL
+// .program--overview .institution h2,
+
+.institutions--single  span strong,
+.journal--overview .group h1,
+.journal--single h1.title,
+.microsites-language header h2:first-of-type,
+
+
+ {
+	font-size: 1.5em;
+	line-height: 1.2em;
+	@media only screen and (min-width: $bp2) {
+		font-size: 2em;
+	} 
+	@media only screen and (min-width: $bp5) {
+		font-size: 2.5em;
+	} 
+}
+// Font-Size XXL
+.program__list .institution h2,
+.institutions--single .program h1.program-title,
+header#header nav ul.main-nav li a,
+header.site-header h1,
+.journal header.journal-header h1,
+.home .site-title {
+		
+	font-size: 1.4em;
+	line-height: 1.1em;
+
+	@media only screen and (min-width: 374px) {
+		font-size: 1.75em;
+	}
+	
+	@media only screen and (min-width: $bp1) {
+		font-size: 2.5em;
+	} 
+	@media only screen and (min-width: $bp2) {
+		font-size: 3em;
+	} 
+	@media only screen and (min-width: $bp5) {
+		font-size: 3.5em;
+	} 
+}

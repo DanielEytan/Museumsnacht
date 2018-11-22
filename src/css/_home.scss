@@ -1,0 +1,80 @@
+// .count {
+// 	color: white;
+// 	background: $yellow;
+// 	// line-height: 0;
+// 	display: inline-block;
+// 	padding: .12em .2em .22em;
+// 	border-radius: 1em;
+// }
+
+
+.home {
+	.cover {
+		height: 75vh;
+		overflow: hidden;
+		background:  url(../bilder/keyvisual-2.jpg) no-repeat center center;
+		background-size: cover;
+		// background-color: rgba(100,100,100, 1);
+  // 		background-blend-mode: multiply;
+  		animation: bc 2s;
+		display: flex;
+		align-items: center;
+  		justify-content: center;
+  		.site-title {
+  			color: rgba(245,245,245,1);
+  			text-align: center;
+  			animation: st 2s;
+  			padding-bottom: .25em;
+  		}
+
+	}
+	.lang {
+		margin-bottom: 1.5em;
+		p {
+			margin-bottom: 1em;
+		}
+	}
+	.info {
+		background: black;
+		color: white;
+		padding: 2em;
+		a {
+			color: white;
+		}
+	}
+	.site-header .mn-date {
+		display: block;
+		margin-bottom:1em;
+
+	}
+	@media only screen and (min-width: $bp1) {
+		.site-header .mn-date {
+			display: none;
+		}
+		.lang {
+				// margin-bottom: 3em;
+				display: flex;
+				>* {
+					flex: 0 1 50%;
+				}
+			}
+		.info {
+
+			.infoblock {
+			display: flex;
+			justify-content: space-around;
+			>* {
+				i {
+					font-size: 3em;
+					margin-bottom: .5em;
+					display: inline-block;
+				}
+				flex: 0 1 25%;
+				margin-bottom: 1em;
+			}
+		}
+		}
+	}
+}
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta http-equiv="Content-Type" charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+	
+	{# Customize these Tags! #}
+	<meta name="og:description" content="Am Freitag, 19.01.2018 findet die 18. Museumsnacht Basel statt. 36 Museen in Basel, St. Louis und in Weil am Rhein sind von 18-2 Uhr geöffnet.">
+	<meta name="description" content="Am Freitag, 19.01.2018 findet die 18. Museumsnacht Basel statt. 36 Museen in Basel, St. Louis und in Weil am Rhein sind von 18-2 Uhr geöffnet.">
+	<meta property="og:image" content="{{ siteUrl }}bilder/mnb18-keyvisual.jpg">
+	<meta property="og:image:type" content="image/jpg">
+	<meta property="og:image:width" content="1000">
+	<meta property="og:image:height" content="1000">
+	<title>{{ siteName }}{% if title is defined %} - {{ title }}{% endif %}</title>
+	<link rel="home" href="{{ siteUrl }}" />
+	<link rel="stylesheet" href="{{ siteUrl }}/css/styles.css"/>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6545038-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6545038-2');
+</script>
+</head>
+<body>
+	<div id="vue-app" v-bind:class="{ active: activeContrast }">
+		<div class="loader" v-if="loader">
+			<figure></figure>
+		</div>
+		{% include "_includes/header" %}
+		<div id="container" {% if mt is defined %}class="mt"{% endif %}>
+
+		<main id="content" role="main">
+
+			{% block content %}
+			<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+			<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+			{% endblock %}
+		</main>
+		</div>
+		{% if lang is defined %}
+			{% if lang == "en" %}
+				{% include "_includes/footer-en" %}
+			{% elseif lang == "fr" %}
+				{% include "_includes/footer-fr" %}
+			{% endif %}
+		{% else %}
+			{% include "_includes/footer" %}
+		{% endif %}
+	</div>
+	</div>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1n1fhLxcWGqlj1AUOBxinlfFn1idc4U" ></script>
+	<script type="text/javascript" src="{{ siteUrl }}/js/lodash.min.js"></script>
+	<script type="text/javascript" src="{{ siteUrl }}/js/vue.js"></script>
+	<script type="text/javascript" src="{{ siteUrl }}/js/main.js"></script>
+<script type="text/javascript" src="//cdn.curator.io/3.0/js/curator.js"></script>
+<script type="text/javascript">
+	// While you're testing
+    // Curator.debug = true;
+
+
+    // Change FEED_ID to your unique FEED_ID
+    var widget = new Curator.Widgets.Waterfall({
+        container:'#curator-feed',
+        postsPerPage:50, 
+        feedId:'e96ed293-63d1-4b02-90f3-9d2dd9c0',
+        filter: {
+	        showNetworks: false,         // show Networks filter bar
+	        networksLabel: 'Networks:',  // Networks filter bar label
+	        showSources: false,          // show Sources filter bar
+	        sourcesLabel: 'Sources:',    // Sources filter bar label
+    	}
+    });
+</script>
+</body>
+</html>

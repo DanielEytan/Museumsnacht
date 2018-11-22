@@ -1,0 +1,243 @@
+.program--overview .filter {
+	.filter__checklists--wrapper {
+		color: white;
+		margin-bottom: .5em;
+	}
+	.filter--institutions .filter--list--wrapper ul li:nth-child(3) {
+					display: none;
+
+	}
+	header {
+
+		color: black;
+		font-size: .9em;
+		>* {
+			cursor: pointer;
+			display: block;
+			&:last-child div{
+				border-bottom: solid 1px;
+			}
+			div{
+				border-top: solid 1px;
+				padding: .25em .6em .4em;
+				position: relative;
+				.arrow {
+					position: absolute;
+					right: .7em;
+				}
+				&.active, &.selected {
+					color: white;
+				}
+
+			}
+			
+		}
+	}
+
+	.filter--list--wrapper {
+
+		ul {
+	
+			max-width: 1200px;
+			height: 0;
+			overflow: hidden;
+			margin: 0 auto;
+			li {
+				// cursor: pointer;
+	
+				label {
+					cursor: pointer;
+				}
+			}
+			li div {
+				box-sizing: border-box;
+				// padding: .4em .8em .65em;
+				padding: .25em .6em .4em;
+				border-radius: .5em;
+				display: inline-block;
+				border: solid 1px;
+				margin-bottom: 1em;
+				font-size: .8em;
+				&.checked {
+					box-sizing: border-box;
+
+					background-color: white;
+					color: $grey-dark;
+					// border: none;
+				}
+				input[type='checkbox'] {
+					// background: red;
+				}
+			}
+		}
+		&.active {
+			padding: 1em .7em 1.1em;
+			ul {
+				height: auto;
+			}
+		}
+	}
+	>* {
+		margin-bottom: 30px;
+
+	}
+	&__time {
+		width: 90%;
+		margin: 0 15px 2em;
+		h2 {
+			margin-bottom: 3em;
+		}
+		.vue-slider-component .vue-slider-tooltip {
+			background: white;
+			border: solid black 1px;
+			border-radius: 0;
+			font-size: 1.2em;
+			color: black;
+			padding: .3em;
+		}
+	}
+	@media only screen and (min-width: 600px) {
+		header {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			>* {
+				flex: 0 1 50%;
+				&:nth-child(1) div, &:nth-child(3) div {
+					border-right: solid 1px $dark;
+
+				}
+				&:nth-child(3) div, &:nth-child(4) div {
+					border-bottom: solid 1px $dark;
+				}
+				// &:last-child
+			}
+		}
+	}
+	@media only screen and (min-width: $bp1) {
+		.filter__checklists--wrapper {
+			margin-bottom: 1em;
+		}
+		&__time {
+			padding: 0 30px;
+			margin-bottom: 2em;
+		}
+		&__time, &__checklists {
+
+		}
+		&__checklists {
+			// margin-top: 2em;
+
+
+			
+			.filter--list--wrapper {
+				div {
+
+					ul {
+						// display: flex;
+						// flex-wrap: wrap;
+						// justify-content: space-between;
+						li {
+							display: inline-block;
+							// flex: 0 1 49%;
+							margin-right: 1%;
+
+							// &:nth-child(2n) {
+							// 	margin-right: 0;
+							// }
+							
+						}	
+
+					}
+				}
+				&.active {
+					padding: 1em 30px 1.1em;
+				}
+			}
+		}
+		.filter--list--wrapper {
+			&.active {
+				// padding: 30px;
+				ul {
+					// margin: 30px 0;
+				}
+			}
+		}
+	}
+	@media only screen and (min-width: $bp2) {
+
+		&__checklists {
+			.title, header {
+				margin: 0 40px;
+			}
+			header {
+				margin: 0 40px;
+
+				>* {
+					flex: 0 1 24%;
+					div {
+						border: solid $dark 1px;
+
+						// padding: .45em .7em .5em;
+						&.active {
+							// border-bottom: 10px $dark solid;
+						}
+					}
+
+				}
+			}
+			.filter--list--wrapper div {
+				ul {
+					display: flex;
+					justify-content: center;
+					flex-wrap: wrap;
+				}
+				ul li {
+					// flex: 0 1 23.5%;
+					flex: none;
+					// display: inline-block;
+					// float: left;
+					width: auto;
+					&:nth-child(2n) {
+						margin-right: 1%;
+					}
+					&:nth-child(4n) {
+						// margin-right: 0;
+					}
+					div {
+						margin-bottom: .75em;
+						// margin-bottom: 1.5em;
+					}
+				}
+			}
+		}
+		&__time {
+			padding: 0;
+			margin: 0 auto 2em;
+			width: 900px;
+		}
+	}
+	@media only screen and (min-width: $bp3) {
+
+		&__checklists header, .title{
+
+				// margin: 0 auto;
+				margin: 0 40px;
+				width: auto;
+				// width: 1200px;
+
+			}
+			&__checklists {
+				.filter--list--wrapper {
+					&.active {
+						padding: 50px 0;
+					}
+					ul {
+					// margin: 0 auto;
+					// margin: 0 30px;
+					// width: 1200px;
+				}
+			}
+		}
+	}
+}

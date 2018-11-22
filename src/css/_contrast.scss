@@ -1,0 +1,169 @@
+#vue-app, header#header {
+	// transition: background .15s ease, color .15s ease;
+}
+#vue-app.active {
+	background: $dark;
+	color: white;
+	padding: 1px;
+	a {
+		color: white;
+	}
+.stream .crt-load-more a,
+	button {
+		background: $dark;
+		border: 1px solid white;
+		color: white;
+		&:hover {
+			background: white;
+			color: $dark;
+			a {
+				color: $dark;
+			}
+		}
+	}
+	header#header {
+		background: $dark !important;
+		box-shadow: 0px 0px 8px 4px rgba(0,0,0,1);
+		.burger-toggle .burger span {
+			background: white;
+		}
+		.saved-link a {			
+			// color: red;
+		}
+	}
+	footer#footer {
+		background:$grey-dark/1.8;
+		>div:nth-child(2) {
+			background: $grey-very-dark;
+		}
+	}
+	#curator-feed .crt-feed .crt-post {
+		background: $notsodark;
+	}
+	#curator-feed .crt-feed .crt-post-header {
+		.crt-icon-twitter {
+			background: url(../bilder/icons/twitter_weiss.png);
+			background-size: 20px;
+
+		}
+		.crt-icon-facebook {
+			background: url(../bilder/icons/facebook_weiss.png);
+			background-size: 20px;
+
+		}
+		.crt-icon-instagram {
+			background: url(../bilder/icons/insta_weiss.png);
+			background-size: 20px;
+
+		}
+	}
+	.microsite-nav ul li {
+		
+		&.active, &:hover {
+			color: white;
+			border-bottom: solid 2px;
+		}
+	}
+	.de {
+		color:white;
+	}
+	.scroll-top-button {
+		background: $dark;
+	}
+	.selected-institution {
+		background: $dark !important;
+		.dismiss {
+			background: $dark;
+			box-shadow: 0px 0px 8px 4px rgba(0,0,0,1);
+		}
+	}
+
+	.program .control-program .share-link >div >div {
+		border: solid 1px white;
+		&:nth-child(1) {
+			background: #210055;
+		}
+		&:nth-child(2):hover {
+			background: white;
+			color: $dark;
+		}
+	}
+	.program--overview .filter header {
+		border: $dark;
+		color: white;
+
+		>* div {
+		 	// &.active, &.selected {background:white;color:$dark;}
+		} 
+	}
+	.program__list__event, .institutions--overview--list-view li {
+		&:nth-child(2n) {
+			background:#210055;
+			// background:#1d004b;
+		}
+
+	}
+	.filter--tag {
+		// background: white !important;
+	}
+	.label--wrapper {
+		color: $dark;
+	}
+	.filter__selection--wrapper .filter-tags--container .filter--tag > div {
+		background: white;
+		color: $dark;
+
+	}
+	.filter__checklists--wrapper > div {
+		background: white !important;
+	}
+
+	.filter header > * div.selected {
+		background: $grey-dark;
+	}
+		.filter header > * div.active {
+		background: white !important;
+		color: $dark;
+	}
+	.filter__checklists--wrapper {
+		// background: white !important;
+		color: $dark;
+	}
+	.label--wrapper.checked {
+		background: $dark;
+		color: white;
+	}
+	.program .share-program .button button {
+		background: $dark;
+		border: solid white 1px;
+		color: white;
+		&:hover {
+				color:  $dark;
+				background: white;
+				a {
+					color:  $dark;
+				}
+			}
+	}
+	.shuttle-line .number i {
+		// background: white !important;
+	}
+	@media only screen and (min-width: $bp1) {
+		.program--overview .filter__checklists header > * div {
+				border: solid white 1px !important;
+						&.active {
+							border-bottom: 10px white solid !important;
+						}
+					}
+		.program__list__event, .institutions--overview--list-view li{
+		&:nth-child(2n) {
+			// background:#210055;
+			background:$dark;
+		}
+		&:hover {
+			
+			background: #210055;
+		}
+	}
+	}
+}

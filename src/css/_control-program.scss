@@ -1,0 +1,17 @@
+.program .control-program {
+	margin-top: 2em;
+	.main-controls {
+		margin:2em 0 3em;
+		// background: $grey-bright;
+		display: flex;
+		justify-content: space-between;
+		button {
+			&:first-of-type {
+				margin-right: 1em;
+			}
+			&.reset-my-program {
+				// color: red;
+			}
+		}
+	}
+}

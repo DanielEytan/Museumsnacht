@@ -1,0 +1,123 @@
+<footer id="footer" class="microsite-footer">
+	<section class="nav-contact">
+		<div class="nav">
+			<nav>
+				<div>
+					<ul class="lang">
+						<li><a style="text-transform: uppercase" href="/">← Page principale en allemand</a></li>
+					</ul>
+					<ul class="sec-nav">
+						<li><a href="/medien">Média</a></li>
+						<li><a href="/impressum">Impressum</a></li>
+						
+					</ul>
+					<ul class="sec-nav">
+						<li><a href="https://museumsnacht.ch//dokumente/Programmheft-Museumsnacht-2018.pdf" download><i>⇓</i> télécharger la brochure</a></li>
+						<li><a href="https://museumsnacht.ch//dokumente/Shuttle-Plan-der-Museumsnacht-2018.pdf" download><i>⇓</i> télécharger le plan des navettes</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="contact">
+			<h2>CONTACT</h2>
+
+			<div class="flex-container">
+				<div><h3>Service de la culture de Bâle-Ville<br>Nuit des musées bâlois</h3><br>
+					<p>+41 61 267 84 01<br><a href="mailto:info@museumsnacht.ch">info@museumsnacht.ch </a></p>
+				</div>
+				<ul class="social">
+					<li><a href="https://twitter.com/museenbasel"><i>ⓣ</i> <span>@museenbasel</span></a></li>
+					<li><a href="https://www.facebook.com/museenbasel/"><i>ⓕ</i> <span>@museenbasel</span></a></li>
+					<li><a href="https://www.instagram.com/museumsnachtbasel/"><i>ⓘ</i> <span>@museumsnachtbasel</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section>
+		<h3>La Nuit des Musées est une manifestation organisée par bâle musées et le Service de la culture de Bâle-Ville.</h3>
+		<ul class="logos">
+			{% for logo in organizer.logoBlock %}
+			<li>
+				<a href="{{ logo.sponsorLink }}">
+					<figure v-if="activeContrast">
+						{% for img in logo.logoBright %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+					<figure v-else="activeContrast">
+						{% for img in logo.logoDark %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<section class="sponsors">
+		<h3>NOS SPONSORS</h3>
+
+		<ul class="logos">
+			{% for logo in sponsores.logoBlock %}
+			<li>
+				<a href="{{ logo.sponsorLink }}">
+					<figure v-if="activeContrast">
+						{% for img in logo.logoBright %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+					<figure v-else="activeContrast">
+						{% for img in logo.logoDark %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<section class="media-partner">
+		<h3>NOS PARTENAIRES MÉDIAS</h3>
+
+		<ul class="logos">
+			{% for logo in mediaPartner.logoBlock %}
+			<li>
+				<a href="{{ logo.sponsorLink }}">
+					<figure v-if="activeContrast">
+						{% for img in logo.logoBright %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+					<figure v-else="activeContrast">
+						{% for img in logo.logoDark %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+		<p><strong>Radio Basilisk se consacre à la Nuit des Musées du 12 au 20 janvier 2018 : écoutez, en apprendre davantage et gagnez des billets.</strong></p>
+	</section>
+	<section class="thanks">
+		<h3>MERCI</h3>
+		<ul class="logos">
+			{% for logo in thanks.logoBlock %}
+			<li>
+				<a href="{{ logo.sponsorLink }}">
+					<figure v-if="activeContrast">
+						{% for img in logo.logoBright %}
+						<img {% if img.width < img.height %}class="portrait"{% endif %} src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+					<figure v-else="activeContrast">
+						{% for img in logo.logoDark %}
+						<img {% if img.width < img.height %}class="portrait"{% endif %} src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>	
+</footer>

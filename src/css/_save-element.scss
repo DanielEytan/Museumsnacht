@@ -1,0 +1,42 @@
+	.save-element {
+		position: absolute;
+		right: 0;
+		top: 25px;
+		z-index: 1;
+		div.save-heart {
+			font-size: 2em;
+			color: rgb(210,210,210);
+			transition: color .25s, text-shadow -25s;
+			cursor: pointer;
+			&.active {
+				color: $red !important;
+			}
+		}
+		
+
+	}
+	@media only screen and (min-width: $bp1) {
+			
+				.save-element div.save-heart {
+					&:hover {
+						color: $grey-bright;
+						text-shadow: -1px 0 $red,0 1px $red,1px 0 $red,0 -1px $red;
+
+					}
+					
+				}
+			
+			.program__list__event.active, .program__list__event__info--wrapper.active {
+			cursor: pointer;
+				// @extend .save-heart:hover;
+				// .save-heart.active {
+				// 	color: $red;
+				// }
+				&:hover .save-heart {
+					color: $grey-bright;
+					text-shadow: -1px 0 $red,0 1px $red,1px 0 $red,0 -1px $red;
+				}
+			}
+		}
+	
+

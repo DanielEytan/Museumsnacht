@@ -1,0 +1,61 @@
+{% extends "_layout" %}
+{% set title = "Journal" %}
+{% set mt = "mt" %}
+{% set cover = {
+			mode: 'fit',
+			width: 1000,
+			quality: 75
+} %}
+
+
+{% block content %}
+
+{# <div class="journal journal--overview">
+	<div class="group">
+		{% for entry in craft.entries.section('journal').type('journal') %}
+		<div class="post">
+			<a href="{{ entry.url }}">
+				{% for img in entry.cover %}
+				<figure {% if img.height > img.width %}class="portrait"{% endif %}>
+					<img src="{{ img.url(cover) }}" alt="{{ img.title }}">
+				</figure>
+				{% endfor %}
+				<p class="post-date">Veröffentlicht am {{ entry.postDate | date("d. F Y") }}</p>
+				<h1><span>{{ entry.title }}</span></h1>
+				{{ entry.excerpt }}
+				<span class="more">Mehr</span>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+ #}
+
+ <section class="journal journal--overview">
+ 		<header class="site-header">
+ 			<h1>Journal</h1>
+ 		</header>
+		<div class="group">
+			{% for entry in craft.entries.section('journal').type('journal') %}
+				<div class="post">
+					<a href="{{ entry.url }}">
+						{% for img in entry.cover %}
+							<figure {% if img.height > img.width %}class="portrait"{% endif %}>
+							{% set fit = {
+							    mode: 'fit',
+							    width: 850,
+							    quality: 75							
+							} %}
+								<img src="{{ img.url(fit) }}" alt="{{ img.title }}">
+							</figure>
+						{% endfor %}
+						<p class="post-date">Veröffentlicht am  {{ entry.postDate | date("d. F Y") }}</p>
+						<h1><span>{{ entry.title }}</span></h1>
+						{{ entry.excerpt }}
+						<span class="more">Mehr</span>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

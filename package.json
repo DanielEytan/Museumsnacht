@@ -1,0 +1,62 @@
+{
+  "name": "Craft-Gulp-Setup",
+  "version": "1.0.0",
+  "description": "Set-Up for Craft CMS and Gulp",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://DanielEytan@github.com/DanielEytan/front-end-setup.git"
+  },
+  "author": "Daniel Eytan Schneider",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanielEytan/front-end-setup/issues"
+  },
+  "homepage": "https://github.com/DanielEytan/front-end-setup#readme",
+  "dependencies": {
+    "browser-sync": "^2.18.6",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-twig": "^0.7.0",
+    "gulp-watch": "^4.3.11",
+    "moment": "^2.19.1",
+    "url-search-params": "^0.10.0",
+    "vue": "^2.5.3",
+    "vue-clipboard2": "0.0.6",
+    "vue-google-maps": "^0.1.21",
+    "vue-instagram": "^1.3.1",
+    "vue-masonry": "^0.10.15",
+    "vue-router": "^3.0.1",
+    "vue-scrollto": "^2.7.10",
+    "vue-slider-component": "^2.4.1",
+    "vue2-google-maps": "^0.8.3",
+    "webpack-stream": "^3.2.0"
+  },
+  "devDependencies": {
+    "axios": "^0.16.2",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "gulp-vueify": "0.0.3",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "vue-loader": "^11.0.0",
+    "vue-scrollto": "^2.7.10",
+    "vue-slider-component": "^2.4.1",
+    "vue-template-compiler": "^2.1.10",
+    "vueify-insert-css": "^1.0.0",
+    "webpack": "^3.6.0"
+  }
+}

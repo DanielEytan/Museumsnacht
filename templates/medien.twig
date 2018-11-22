@@ -1,0 +1,74 @@
+{% extends "_layout" %}
+{% set title = "Medien" %}
+{% set mt = "mt" %}
+{% block content %}
+
+
+<div class="media info-block test">
+	<header class="site-header">
+		<h1>Medien / média</h1>
+		<h2>Kontakt für Medien / Contact média</h2>
+		<p>
+			Eva Keller, Leitung Fachbereich Museen und Kulturmarketing<br>
+			Abteilung Kultur Basel-Stadt<br>
+			+41 61 267 68 41<br>
+			+41 78 766 08 21<br>
+			<a href="mailto:eva.keller@bs.ch">eva.keller@bs.ch</a></p>
+		</header>
+		{# <section class="docs">
+			<h2>Dokumente / documents</h2>
+			<ul>
+				{% for block in entry.media %}
+				{% if block.type == "docs" %}
+				{% for doc in block.dokument %}
+				<li><a href="{{ doc.getUrl}}" download><strong><i>⇓</i> {{ block.titel }}</strong></a> ({{ doc.size | filesize }})</li>
+				{% endfor %}
+				{% endif %}
+				{% endfor %}
+			</ul>
+		</section> #}
+		<section class="images">
+			<h2>Medienmitteilungen / Communiqués de presse</h2>
+			<div>
+				<ul>
+					{% for block in entry.media %}
+					{% if block.type == "text" %}
+					{{ block.text }}
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</section>
+		<section class="images">
+			<h2>Bilder / photos</h2>
+			<div class="flex-container">
+				{% for block in entry.media %}
+				{% if block.type == "img" %}
+				<div class="image">
+					{% for img in block.img %}
+					<figure>
+						<img src="{{img.getUrl}}" alt="{{img.title}}">
+					</figure>
+					<a href="{{ img.getUrl}}" download><strong><i>⇓</i> {{ block.titel }} </strong></a> ({{ img.size | filesize }})
+					{% endfor %}
+				</div>
+				{% endif %}
+				{% endfor %}
+			</div>
+		</section>
+		{# <section class="images">
+			<h2>Videos / vidéos</h2>
+			<div>
+				<ul>
+					{% for block in entry.media %}
+					{% if block.type == "video" %}
+					{% for video in block.video %}
+					<li><a href="{{ video.getUrl}}"><strong><i>⇓</i> {{ block.titel }}</strong></a> </li>
+					{% endfor %}
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</section> #}
+		
+		{% endblock %}

@@ -1,0 +1,266 @@
+// modules
+
+@import 'reset';
+@import 'variables';
+@import 'typo';
+@import 'animations';
+@import 'frames';
+@import 'group';
+@import 'print';
+
+// partial
+
+@import 'base';
+@import 'header';
+@import 'footer';
+@import 'home';
+@import 'journal';
+@import 'journal-single';
+@import 'program';
+@import 'institution';
+@import 'institution-overview-map';
+@import 'institution-single';
+@import 'microsites-language';
+@import 'media';
+@import 'social-stream';
+@import 'downloads';
+
+
+// components
+
+@import 'share-program';
+@import 'filter';
+@import 'filter-selection';
+@import 'presell';
+@import 'save-element';
+@import 'section-nav';
+@import 'button';
+@import 'scroll-top';
+@import 'control-program';
+@import 'shuttle-line';
+@import 'nav';
+@import 'contrast';
+@import 'loader';
+@import 'figure';
+
+// temporary
+
+@import 'can';
+@import 'daniel';
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// [v-cloak] { display:none; }
+
+.imprint {
+	p {
+		margin-bottom: 1.5em !important;
+	}
+}
+.lost {
+	margin-bottom: 3em;
+	text-align: center;
+	h1 {
+		margin-top: 1em;
+		height: 10vw;
+		font-size: 15vw;
+		margin-bottom: .25em;
+		display: block;
+	}
+}
+.de {
+	color:black;
+}
+.fr {
+	color: #009fe3;
+}
+.en {
+	color: #e30613;
+}
+.it {
+	color: #009640;
+}
+.other {
+	color: #9d9d9d;
+}
+
+.fade-enter-active, .fade-leave-active {
+	transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0
+}
+
+
+.event-block {
+	margin-bottom: 3em;
+
+	font-family: lyon-medium;
+
+	span {
+		font-family: main-book;
+	}
+	p {
+		font-size: 1.1em;
+		line-height: 1.2em;
+	}
+	&.hashtag {
+		 h1 {
+			margin-bottom:.25em !important;
+			padding-top: .25em;
+		}
+		margin-bottom: 1em;
+	}
+}
+
+// .mobility, .tickets {
+.info-block {	
+	margin-bottom: 3em;
+	ul {
+		margin-bottom: 1.5em;
+		li {
+			margin-bottom: .25em;
+			list-style-type: initial;
+			margin-left: 1em;
+		}
+	}
+	h3 {
+		margin-bottom: .5em;
+	}
+	h2,p {
+		margin-bottom: 1em;
+	}
+}
+
+.mobility a, 
+.tickets a,
+.home .lang a,
+.program .adapt-program p a,
+.program .empty a,
+.visit a,
+.institutions--single address a,
+.info-block a,
+.program .site-header p a,
+.institutions--overview--list-view h1 a,
+.journal .post .more,
+.microsites-language section header a,
+.microsites-language .intro a,
+	.next-prev h1,
+	.journal--single article .text-block a,
+	.journal--single article .lead-text a,
+
+	.media a,
+	.lost a,
+	.downloads p a,
+	.event-block a
+	// .institutions--overview--list-view h1
+
+
+{
+		box-shadow: inset 0 -4px 0 rgb(230,230,230);
+		border-bottom: solid 3px rgb(230,230,230);
+		text-decoration: none !important;
+		transition: background .35s;
+		font-family: 'main-eb', helvetica;
+		&:hover {
+			background: rgb(230,230,230);
+		}	
+}
+
+	// .institutions--overview--list-view li {
+	// 	&:hover {
+	// 		h1 {
+	// 			background: white;
+	// 			box-shadow: inset 0 -4px 0 white;
+	// 	border-bottom: solid 3px white;
+	// 		}
+	// 	}
+	// 	h1 {
+	// 		display: inline-block;
+	// 	}
+	// }
+
+
+.journal .post:hover .more {
+	background: rgb(230,230,230);
+}
+
+// footer#footer .contact, 
+footer#footer .nav-contact,
+.additional-program {
+	a {
+		box-shadow: inset 0 -4px 0 white;
+		border-bottom: solid 3px white;
+		text-decoration: none !important;
+		transition: background .35s;
+		font-family: 'main-eb', helvetica;
+		&:hover {
+			background: white;
+		}
+	}
+}
+
+#vue-app.active {
+	.home .lang a,
+	.microsites-language .intro a,
+	.program .adapt-program p a,
+	.program .empty a,
+	.visit a,
+	.institutions--single address a,
+	.info-block a,
+	.program .site-header p a,
+	.institutions--overview--list-view h1 a,
+	.journal .post .more,
+	.journal--single p a, 
+	.journal--single article .lead-text a,
+	
+	.next-prev h1,
+	.lost a,
+	.event-block a
+
+	
+	{
+			box-shadow: inset 0 -4px 0 $notsodark;
+			border-bottom: solid 3px $notsodark;
+			// text-decoration: none !important;
+			// transition: background .35s;
+			&:hover {
+				background: $notsodark;
+			}	
+	}
+
+
+
+	.journal .post:hover .more {
+		background: $notsodark;
+	}
+
+	// footer#footer .contact, 
+	footer#footer .nav-contact,
+	.additional-program {
+		a {
+			box-shadow: inset 0 -4px 0 $notsodark;
+			border-bottom: solid 3px $notsodark;
+			text-decoration: none !important;
+			transition: background .35s;
+			&:hover {
+				background: $notsodark;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+// .link-with-arrow::after {
+// 	content: "↗︎ arrow";︎
+// }

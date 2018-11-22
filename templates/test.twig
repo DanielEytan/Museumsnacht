@@ -1,0 +1,51 @@
+{% extends "_layout" %}
+{% set title = "News" %}
+{% set mt = "mt" %}
+	{% block content %}
+
+
+	<div class="program test">
+
+
+		{% set count = craft.entries.section('program').type('Event').total() %}
+		Total: {{ count }}<br><br>
+   							<ul class="program__list program__list--selection">
+
+							{# {% for entry in craft.entries.section('program').total() %} #}
+   							{# {% set parent = craft.entries.ancestorOf(entry).level(1).first() %} #}
+		{% set entries = craft.entries.section('program').type('Event') %}
+							{% for entry in entries %}
+								
+							
+								<li class="program__list__event">
+				
+						          	 {# <section class="institution"> #}
+									{# {% for linie in parent.shuttleLine %}
+										<span class="suttle-line" style="color: {{linie.color}}"> {{ parent.number }} {{ linie.title }}</span><br>
+						               <a href="{{ parent.url }}">{{ parent.title }}</a><br></span>
+									{% endfor %} #}
+						               
+
+						            </section>
+						            <h1 class="event-title">{{ entry.title }}</h1>
+						            {% for time in entry.time%}
+						            	<time>
+											{% switch time.type %}
+											{% case "setTimes" %}
+											{{ time.start | date("h:i") }} 
+											{% if time.duration | length %}(Dauer: {{ time.duration }}){% endif %}<br>
+											{% case "continuous" %}
+											{{ time.start | date("h:i") }} – {{ time.end | date("h:i") }} (Durchgehend)
+											{% case "iterating" %}									
+											{{ time.start | date("h:i") }} – {{ time.end | date("h:i") }} ({{ time.frequency }}{% if time.duration | length %}, Dauer: {{ time.duration }} {% endif %})
+											{% endswitch %}
+										</time>
+						            {% endfor %}
+						            {# {{ entry.description }} #}
+
+								
+						         </li><br><br>
+							{% endfor %}
+							</ul>
+						</div>
+	{% endblock %}

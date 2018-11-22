@@ -1,0 +1,82 @@
+.group {
+
+
+	@media only screen and (min-width: $bp1) {
+		&--overview .flex-container {
+			>* {
+				flex: 0 1 49%;
+				&:nth-child(2n) {
+					margin-left: 2%;
+				}
+			}
+			// figure {
+			// 	margin: 60px;
+			// }
+		}
+	}
+
+}
+
+
+.group {
+	display: flex;
+	flex-wrap: wrap;
+	 > * {
+		width: 100%;
+		// margin-bottom: 30px;
+
+	}
+	&.of-two {
+		> * {
+	 		flex: 0 1 100%;
+			// margin-bottom: 60px;
+			
+			@media only screen and (min-width: $bp1) {
+				flex: 0 1 49%;
+				&:nth-child(2n) {
+					margin-left: 2%;
+				}
+			}
+			@media only screen and (min-width: $bp2) {
+				flex: 0 1 32%;
+				margin-right: 2%;
+				&:nth-child(2n) {
+					margin-left: 0;
+				}
+				&:nth-child(3n) {
+					margin-right: 0;
+				}			
+			}
+		}
+
+	}
+
+	&.of-three {
+		> * {
+			flex: 0 1 100%;
+			// margin-bottom: 60px;
+			
+			@media only screen and (min-width: $bp1) {
+				flex: 0 1 49%;
+				&:nth-child(2n) {
+					margin-left: 2%;
+				}
+			}
+			@media only screen and (min-width: $bp2) {
+				flex: 0 1 32%;
+				margin-right: 2%;
+				&:nth-child(2n) {
+					margin-left: 0;
+				}
+				&:nth-child(3n) {
+					margin-right: 0;
+				}			
+			}
+		}
+	}
+	&.of-four {
+		> * {
+
+		}
+	}
+} 

@@ -1,0 +1,22 @@
+  .scroll-top-button {
+    cursor: pointer;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -200px;
+    right: 20px;
+    width: 40px;
+    transition: bottom .5s ease-in, opacity .5s ease-in;
+    opacity: 0;
+    overflow: hidden;
+    height: 40px;
+    padding-bottom: 9px;
+    background:rgba(255,255,255,.95);
+    border: 1px solid;
+    z-index: 21;
+    &.show {
+        bottom: 20px;
+        opacity: 1;
+    }
+  }

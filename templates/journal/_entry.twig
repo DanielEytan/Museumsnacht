@@ -1,0 +1,100 @@
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set mt = "mt" %}
+{% set cover = {
+				   mode: 'fit',
+				   width: 1000,
+				   quality: 75
+				} %}
+
+{% block content %}
+<section class="journal journal--single">
+	<article>
+		<header class="journal-header">
+			<p class="post-date">Veröffentlicht am {{ entry.postDate | date("d. F Y") }}</p>
+			<h1>{{ entry.title }}</h1>
+			{% for img in entry.cover %}
+			<figure {% if img.height > img.width %}class="portrait"{% endif %}>
+				
+								
+				<img src="{{ img.url(cover) }}" alt="{{ img.title }}">
+				{% if img.caption %}
+				<figcaption>{{ img.caption }}</figcaption>
+				{% endif %}
+			</figure>
+			{% endfor %}
+			<div class="lead-text">
+				{{ entry.leadText }}
+			</div>
+		</header>
+		{% for block in entry.contentJournal %}
+		{% switch block.type %}
+		{% case "subtitle" %}
+		<h2 class="subtitle">{{ block.subtitle }}</h2>
+		{% case "text" %}
+		<div class="text text-block">
+			{{ block.text }}
+		</div>
+		{% case "img" %}
+		<div class="img">
+			{% for img in block.img %}
+			<figure {% if img.height > img.width %}class="portrait"{% endif %}>
+				<img src="{{ img.getUrl(cover) }}" alt="{{ img.title }}">
+				{% if img.caption %}
+				<figcaption>{{ img.caption }}</figcaption>
+				{% endif %}
+			</figure>
+			{% endfor %}
+		</div>
+		{% case "program" %}
+		<div class="program">
+			<ul class="program__list program__list--selection">
+				{% for entry in block.entry %}
+				{% set program = entry.id %}
+				<journalprogram :id="{{program}}"></journalprogram>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endswitch %}
+		{% endfor %}				
+	</article>
+	{% if entry.id == "1280" %}
+		<div class="stream">
+		<div id="curator-feed"></div>
+
+	</div>
+	{% endif %}
+	
+	<div class="share">
+		<h2 class="subtitle">Artikel teilen</h2>
+		<button>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//museumsnacht.ch/journal/{{ entry.slug }}"><i>ⓕ</i> Facebook</a>
+		</button>
+		<button>
+			<a href="https://twitter.com/home?status=https%3A//museumsnacht.ch/journal/{{ entry.slug }}"><i>ⓣ</i> Twitter</a>
+		</button>	
+	</div>
+	<div class="next-prev">
+		{% set params = {section: 'journal', limit: null} %}
+		{% set entryPrev = entry.getPrev(params) %}
+		{% set entryNext = entry.getNext(params) %}
+		<div class="prev" >
+
+			{% if entryPrev %}
+			<a href="{{entryPrev.url}}">
+				<span>← zum vorherigen Artikel:</span>
+				<h1>{{ entryPrev.title }}</h1>
+			</a>
+			{% endif %}
+		</div>
+		<div class="next">
+			{% if entryNext %}
+			<a href="{{entryNext.url}}">
+				<span>zum nächsten Artikel:  →</span>
+				<h1>{{ entryNext.title }}</h1>
+			</a>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+	<article class="institutions institutions--single">
+		<header>
+			<a href="/museen">
+				<button>
+					← zu allen Museen
+				</button>
+			</a>
+			<h1 class="title">{{ entry.title }}</h1>
+		</header>
+		<div class="institution-infos">
+			
+			<div class="text">
+
+				<div class="address">
+					<address><a target="_blank" href="https://maps.google.com/?q={{ entry.map.address }}">📌 {{ entry.address }}{% if entry.location %}, {{ entry.location }}{% endif %} ↗</a></address></div>
+					
+					<h3>Anfahrt:</h3>
+					<div class="suttle-line">
+						{% set shuttleLine = entry.shuttleLine %}
+						{% if shuttleLine | length < 2 %}
+						{% for color in entry.shuttleLine %}
+						<span style="color: {{ color.color }}">{{ color.title }}</span>
+						{% endfor %}
+						{% else %}
+						{% for color in entry.shuttleLine %}
+						<span style="color: {{ color.color }}"><nobr>{{ color.title }} </nobr></span>
+						{% endfor %}
+						{% endif %}
+					</div>
+					<p>{{ entry.journey }}</p><br>
+				</div>
+				<div class="visitor-infos">
+					<ul>
+						{% if entry.advanceSale %}<li><i>&#127915;</i> Vorverkauf/Abendkasse</li>{% endif %}
+						{% set accessibility = entry.accessibility.value %}
+						{% switch accessibility %}
+						{% case "wheelchair" %}
+						<li><i>&#9855;</i> {{ entry.accessibility.label }}</li>
+						{% case "partlyWheelchair" %}
+						<li><i>&#9855;*</i> {{ entry.accessibility.label }}</li>
+						{% default %}
+						{% endswitch %}
+						{% if entry.wifi %}<li><i>&#8980;</i> Wi-Fi</li>{% endif %}
+					</ul>				
+				</div>
+			</div>
+			<section class="program">
+				<header>
+					<h1 class="program-title">{{ entry.programmTitle }}</h1>
+					<div class="program-text">{{ entry.programmText }}</div>
+
+					{% for img in entry.programImg %}
+					<figure>
+						<img src="{{ img.getUrl }}" alt="{{ img.title }}">
+						{% if img.caption %}
+						<figcaption>{{ img.caption }}</figcaption>
+						{% endif %}
+					</figure>
+					{% endfor %}
+					<h2>Programm</h2>
+				</header>
+				<institutionprogram parent="{{entry.number}}"></institutionprogram>
+				<div class="food">
+					<h3>Essen und trinken:</h3>
+					<p><strong>{{ entry.food }}</strong></p>
+				</div>
+			</section>
+		</article>
+
+

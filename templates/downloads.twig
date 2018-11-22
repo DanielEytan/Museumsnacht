@@ -1,0 +1,66 @@
+{% extends "_layout" %}
+{% set title = "Downloads" %}
+{% set mt = "mt" %}
+{% block content %}
+
+
+<div class="downloads test">
+{# 		{% set assets = craft.assets({
+		    relatedTo: docs,
+		    order:     "sortOrder",
+		    limit:     null
+		}) %} #}
+		<header class="site-header">
+			<h1>Interner Bereich</h1>
+		</header>
+		{# <ul>
+			{% for docs in craft.assets.source('docs') %}
+				<li><a href="{{ docs.getUrl}}"><strong>{{ docs.title }}</a></strong><br>Link: https://museumsnacht.ch/dokumente/{{ docs.slug }} </li>
+			{% endfor %}
+		</ul> #}
+		{% if craft.request.getParam('password') == '#mnbasel' %}
+
+		<div class="docs">
+			{% for entry in entry.downloads %}
+			<div>
+				<h1 class="block-title">{{ entry.blockTitle }}</h1>
+
+
+				<ul>
+					{% for entry in entry.docs %}
+					{% if entry.kind == "image" %}
+
+					<li class="image">
+						<figure>
+							<img src="{{ entry.getUrl }}" alt=" {{entry.title }}">
+						</figure>
+
+						<a href="{{ entry.getUrl}}" download><strong><i>⇓</i> {{ entry.title }} </strong></a> ({{ entry.size | filesize }})
+
+
+					</li>
+					{% else %}
+						<li>
+							<a href="{{ entry.getUrl}}" download><strong><i>⇓</i> {{ entry.title }} </strong></a> ({{ entry.kind }}: {{ entry.size | filesize }})
+						</li>
+					{% endif %}				
+					{% endfor %}
+				</ul>		
+
+			</div>
+			{% endfor %}
+			{# <downloads></downloads> #}
+		</div>
+		{% else %}
+		<div class="login">
+			<p>Steht nur teilnehmenden Museen und Gastinstitutionen zur Verfügung.</p>
+			    <p>Brauchen Sie ein Login? Melden Sie sich bei <a href="mailto:mail@museumsnacht.ch">mail@museumsnacht.ch</a></p><br>
+			    <form action="{{ craft.request.getUrl() }}" method="POST" accept-charset="utf-8" class="form-inline">
+			        {{ getCsrfInput() }}
+			        <input type="password" name="password" value="">
+			        <button type="submit">Login</button>
+			    </form>
+		    </div>
+		{% endif %}
+	</div>
+	{% endblock %}

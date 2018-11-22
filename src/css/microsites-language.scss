@@ -1,0 +1,51 @@
+.microsites-language {
+	header {
+		h2 {
+			margin-bottom: .5em;
+		}
+		 p {
+			margin-bottom: 1em;
+		}
+	}
+	
+	.intro h2 {
+		margin-bottom: 1em;
+	}
+	em {
+		vertical-align:.36em;
+		font-size: .8em;
+		line-height: 0;
+	}
+	> section {
+		padding-top: 2em;
+	}
+	.microsite-nav {
+		margin-top: 2em;
+		ul {
+
+			li {
+				padding: .5em;
+				color: rgb(120,120,120);
+				cursor: pointer;
+				&.active, &:hover {
+					color: black;
+					border-bottom: solid 2px;
+				}
+			}
+		}
+	}
+	@media screen and (min-width: 600px) {
+		.microsite-nav {
+		border-bottom: solid 1px;
+		
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				li {
+					padding: .5em 0;
+				}
+			}
+		}
+	}
+}

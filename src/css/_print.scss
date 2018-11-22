@@ -1,0 +1,19 @@
+@media print { 
+	/* All your print styles go here */
+
+	body {
+		font-size: .8em;
+	}
+	#footer, #header, .burger-toggle, .control-program, .share-program, .program--saved .header p, .save-element, .intro
+
+	{ display: none !important; } 
+	body:before{
+		content:"Museumsnacht Basel 2017";
+	}
+	body:after{
+		content:"Die Museumsnacht ist eine Veranstaltung der museen basel und der Abteilung Kultur Basel-Stadt. Am 19. Januar 2018 bieten 36 Museen und Kulturinstitutionen von 18-2 Uhr ein reichhaltiges Programm: www.museumsnacht.ch";
+	}
+	.mt {
+		margin-top: 50px !important;
+	}
+}

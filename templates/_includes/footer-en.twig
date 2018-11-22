@@ -1,0 +1,121 @@
+<footer id="footer" class="microsite-footer">
+	<section class="nav-contact">
+		<div class="nav">
+			<nav>
+				<div>
+					<ul class="lang">
+						<ul class="lang">
+							<li><a style="text-transform: uppercase" href="/">← Main page in german</a></li>
+						</ul>
+					</ul>
+					<ul class="sec-nav">
+						<li><a href="/impressum">Impressum</a></li>	
+					</ul>
+					<ul class="sec-nav">
+						<li><a href="https://museumsnacht.ch//dokumente/Programmheft-Museumsnacht-2018.pdf" download><i>⇓</i> download programme booklet</a></li>
+						<li><a href="https://museumsnacht.ch//dokumente/Shuttle-Plan-der-Museumsnacht-2018.pdf" download><i>⇓</i> download shuttle plan</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="contact">
+			<h2>CONTACT</h2>
+			<div class="flex-container">
+				<div><h3>Division of Cultural Affairs, Canton of Basel Stadt<br>Basel Museums Night</h3><br>
+					<p>+41 61 267 84 01<br><a href="mailto:info@museumsnacht.ch">info@museumsnacht.ch </a></p>
+				</div>
+				<ul class="social">
+					<li><a href="https://twitter.com/museenbasel"><i>ⓣ</i> <span>@museenbasel</span></a></li>
+					<li><a href="https://www.facebook.com/museenbasel/"><i>ⓕ</i> <span>@museenbasel</span></a></li>
+					<li><a href="https://www.instagram.com/museumsnachtbasel/"><i>ⓘ</i> <span>@museumsnachtbasel</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section>
+		<h3>The Basel Museum Night is organised by museen basel and Basel-Stadt’s Division of Cultural Affairs.</h3>
+		<ul class="logos">
+			{% for logo in organizer.logoBlock %}
+			<li>
+				<a href="{{ logo.sponsorLink }}">
+					<figure v-if="activeContrast">
+						{% for img in logo.logoBright %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+					<figure v-else="activeContrast">
+						{% for img in logo.logoDark %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<section class="sponsors">
+		<h3>OUR SPONSORS</h3>
+
+		<ul class="logos">
+			{% for logo in sponsores.logoBlock %}
+			<li>
+				<a href="{{ logo.sponsorLink }}">
+					<figure v-if="activeContrast">
+						{% for img in logo.logoBright %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+					<figure v-else="activeContrast">
+						{% for img in logo.logoDark %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<section class="media-partner">
+		<h3>OUR MEDIA PARTNERS</h3>
+		<ul class="logos">
+			{% for logo in mediaPartner.logoBlock %}
+			<li>
+				<a href="{{ logo.sponsorLink }}">
+					<figure v-if="activeContrast">
+						{% for img in logo.logoBright %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+					<figure v-else="activeContrast">
+						{% for img in logo.logoDark %}
+						<img src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+		<p><strong>From 12 to 20 January 2017, Radio Basilisk will focus on the MuseumNight: listen in, find out more, win tickets</strong></p>
+	</section>
+	<section class="thanks">
+		<h3>THANK YOU</h3>
+		<ul class="logos">
+			{% for logo in thanks.logoBlock %}
+			<li>
+				<a href="{{ logo.sponsorLink }}">
+					<figure v-if="activeContrast">
+						{% for img in logo.logoBright %}
+						<img {% if img.width < img.height %}class="portrait"{% endif %} src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+					<figure v-else="activeContrast">
+						{% for img in logo.logoDark %}
+						<img {% if img.width < img.height %}class="portrait"{% endif %} src="{{ img.getUrl }}" alt="{{ logo.sponsorName }}">
+						{% endfor %}
+					</figure>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>	
+</footer>

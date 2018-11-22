@@ -1,0 +1,31 @@
+.program {
+	&__list {
+		&--complete {
+			&__event-list {
+				border-top: solid 1px;
+				padding-top: 1.25em;
+				margin-top: 1.15em;
+				margin-bottom: 2em;
+			}
+		}
+		&--selection {
+			.institution {
+				margin-bottom: 1em;
+			}
+		}
+		&__event {
+			position: relative;
+			border-bottom: solid 1px;
+			margin-bottom: 1.15em;
+			padding-bottom: 1.25em;
+			padding-right: 50px;
+
+		}
+	}
+	&--single {
+		margin-bottom: 2em;
+		.institution {
+			margin-bottom: 1em;
+		}
+	}
+}

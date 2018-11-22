@@ -1,0 +1,86 @@
+{% extends "_layout" %}
+{% set mt = "mt" %}
+{% set title = "Programm" %}
+
+	{% block content %}
+		<section class="program program--overview">
+
+			<header class="site-header">
+				<h1>Programm</h1>
+				<div class="intro">
+					<p>Die Museumsnacht bietet rund 200 Programmangebote in 36 Museen und Kulturinstitutionen. Nutze die Filter und sortiere das reichhaltige Angebot nach deinen Interessen: Mit einem Klick auf <i>❤</i> landen deine Favoriten direkt in <a href="/programm/mein-programm">Mein Programm</a>.</p>
+				</div>
+			</header>
+
+			<div class="filter">
+				<div class="filter__time">
+					<h2>
+						Zeit
+					</h2>
+					<div class="filter--slider--wrapper">
+						<timefilter v-model="checkedTimes"></timefilter>
+					</div>
+				</div>
+				<div class="filter__checklists">
+					<div class="title">
+						<h2>FILTERN NACH:</h2>
+					</div>
+
+					<header>
+						<div>
+							<div v-on:click="toggleInstitution" v-bind:class="{ active: openInstitution, selected: checkedInstitutions.length > 0  }">
+								<span v-if="checkedInstitutions.length > 0">(${checkedInstitutions.length})</span> Museen <i class="arrow">${ openInstitution ? '▲' : '▼'}</i>
+							</div>
+						</div>
+						<div>
+							<div v-on:click="toggleThemes" v-bind:class="{ active: openThemes, selected: checkedThemes.length > 0 }">
+								<span v-if="checkedThemes.length > 0">(${checkedThemes.length})</span> Themen<i class="arrow">${ openThemes ? '▲' : '▼'}</i>
+							</div>
+						</div>
+						<div>
+							<div v-on:click="toggleKinds" v-bind:class="{ active: openKinds, selected: checkedEvents.length > 0  }">
+								<span v-if="checkedEvents.length > 0">(${checkedEvents.length})</span> Veranstaltungsarten <i class="arrow">${ openKinds ? '▲' : '▼'}</i>
+							</div>
+						</div>
+						<div>
+							<div v-on:click="toggleLang" v-bind:class="{ active: openLang, selected: checkedLanguages.length > 0  }">
+								<span v-if="checkedLanguages.length > 0">(${checkedLanguages.length})</span> Sprachen <i class="arrow">${ openLang ? '▲' : '▼'}</i>
+							</div>
+						</div>
+					</header>
+					<div class="filter__checklists--wrapper">
+
+						<div class="filter--institutions">
+							<div class="filter--list--wrapper"  v-bind:class="{ active: openInstitution }">
+								{# <header v-on:click="toggleInstitution"><span v-if="checkedInstitutions.length > 0">(${checkedInstitutions.length})</span> Institutionen <span class="arrow">${ openInstitution ? '▲' : '▼'}</span></header> #}
+								<checkboxfilter @toggle-filters="toggleFilters" v-bind:value-name="institutionsAPITitle" v-model="checkedInstitutions"></checkboxfilter>
+							</div>
+						</div>
+						<div class="filter--themes">
+							<div class="filter--list--wrapper"  v-bind:class="{ active: openThemes }">
+								{# <header v-on:click="toggleThemes"><span v-if="checkedThemes.length > 0">(${checkedThemes.length})</span> Themen <span class="arrow">${ openThemes ? '▲' : '▼'}</span></header> #}
+								<checkboxfilter @toggle-filters="toggleFilters" v-bind:value-name="themesAPITitle" v-model="checkedThemes"></checkboxfilter>
+							</div>
+						</div>
+						<div class="filter--kind-of-event">
+							<div class="filter--list--wrapper" v-bind:class="{ active: openKinds }">
+								{#  <header v-on:click="toggleKinds"><span v-if="checkedEvents.length > 0">(${checkedEvents.length})</span> Veranstaltungen <span class="arrow">${ openKinds ? '▲' : '▼'}</span></header> #}
+								<checkboxfilter @toggle-filters="toggleFilters" v-bind:value-name="eventsAPITitle" v-model="checkedEvents"></checkboxfilter>
+							</div>
+						</div>
+						<div class="filter--languages">
+							<div class="filter--list--wrapper" v-bind:class="{ active: openLang }">
+								{#   <header v-on:click="toggleLang"><span v-if="checkedLanguages.length > 0">(${checkedLanguages.length})</span> Sprachen <span class="arrow">${ openLang ? '▲' : '▼'}</span></header> #}
+								<checkboxfilter @toggle-filters="toggleFilters" v-bind:value-name="languagesAPITitle" v-model="checkedLanguages"></checkboxfilter>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+			</div>
+			{% cache %}
+			<programlist :checked-institutions="checkedInstitutions" :checked-themes="checkedThemes" :checked-events="checkedEvents" :checked-languages="checkedLanguages" :checked-times="checkedTimes" v-on:remove-filter="removeFilter"></programlist>
+			{% endcache %}
+		</section>
+	{% endblock %}

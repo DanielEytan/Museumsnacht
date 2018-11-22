@@ -1,0 +1,41 @@
+	.presell {
+		margin-bottom: 2em;
+		.toggle-list {
+			.presell-toggle {
+				padding: .15em .35em .35em;
+				cursor: pointer;
+				border: solid 1px;
+			}
+			&:not(.open) .presell-toggle {
+				font-size: .8em;
+			}
+			&.open {
+				.presell-toggle {
+					cursor: auto;
+					border-radius: .5em;
+					border: none;
+					padding: .15em 0 .35em;
+					i {
+						display: none;
+					}
+				}
+			}
+		}
+		.presell-location {
+			// height: 0;
+			overflow: hidden;
+			transition: opacity 1s;
+			// opacity: 0;
+			&.open {
+				height: auto;
+				opacity: 1;
+			}
+			p {
+				margin-bottom: 0;
+			}
+			>div {
+				border-bottom: solid 1px;
+				padding: 1em 0;
+			}
+		}
+	}
