@@ -12,7 +12,7 @@
 			<div class="text">
 
 				<div class="address">
-					<address><a target="_blank" href="https://maps.google.com/?q={{ entry.map.address }}">📌 {{ entry.address }}{% if entry.location %}, {{ entry.location }}{% endif %} ↗</a></address></div>
+					<address><a target="_blank" href="https://maps.google.com/?q={{ entry.map ? entry.map.address : ''}}">📌 {{ entry.address }}{% if entry.location %}, {{ entry.location }}{% endif %} ↗</a></address></div>
 					
 					<h3>Anfahrt:</h3>
 					<div class="suttle-line">

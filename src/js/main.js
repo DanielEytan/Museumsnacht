@@ -5,8 +5,8 @@ window._ = require('lodash');
 //import
 // import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ThemeList from './components/ThemeList.vue'
-import InstitutionFilter from './components/InstitutionFilter.vue'
+// import ThemeList from './components/ThemeList.vue'
+// import InstitutionFilter from './components/InstitutionFilter.vue'
 import CheckboxFilter from './components/CheckboxFilter.vue'
 import TimeFilter from './components/TimeFilter.vue'
 import ProgramList from './components/ProgramList.vue'
@@ -49,8 +49,8 @@ var vueApp = new Vue({
     delimiters: ['${', '}'],
     el: '#vue-app',
     components: {
-        themelist:ThemeList,
-        institutionfilter:InstitutionFilter,
+        // themelist:ThemeList,
+        // institutionfilter:InstitutionFilter,
         checkboxfilter:CheckboxFilter,
         timefilter:TimeFilter,
         programlist: ProgramList,

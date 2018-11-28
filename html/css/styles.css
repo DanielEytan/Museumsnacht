@@ -1719,9 +1719,6 @@ footer#footer {
   color: white;
   margin-bottom: .5em; }
 
-.program--overview .filter .filter--institutions .filter--list--wrapper ul li:nth-child(3) {
-  display: none; }
-
 .program--overview .filter header {
   color: black;
   font-size: .9em; }

@@ -3,9 +3,9 @@
       <ul class="list-group">
         <li class="list-group-item" v-for="entry in possibleValues">
           <div v-on:click="filterChecked(entry)" class="label--wrapper" v-bind:class="{checked:checkedLabel(entry)}">
-          <input class="filter-checkbox" type="checkbox" v-bind:id="'program-input-'+entry.id" v-bind:value="entry.title" v-model="internalCheckedValues">
-          <label v-bind:class="{checked:checkedLabel(entry)}" v-bind:for="entry.title">{{ entry.title }}</label> 
-        </div>
+            <input class="filter-checkbox" type="checkbox" v-bind:id="'program-input-'+entry.id" v-bind:value="entry.title" v-model="internalCheckedValues">
+            <label v-bind:class="{checked:checkedLabel(entry)}" v-bind:for="entry.title">{{ entry.title }}</label> 
+          </div>
         </li >
         <div class="filter-checkbox--close" v-on:click="toggleFilters">
           SCHLIESSEN
@@ -69,15 +69,15 @@ module.exports = {
     },
     getEntries: function () {
       let _this = this;
-      axios.get(this.valueName + '.json')
+      axios.get("/" + this.valueName + '.json')
         .then(response => {
           this.possibleValues = _.sortBy(response.data.data,'title');
-          this.initValues();
+          // this.initValues();
         })
     },
-    initValues () {
-      this.$emit('init-possible-values', _.map(this.possibleValues,'title'));
-    }
+    // initValues () {
+    //   this.$emit('init-possible-values', _.map(this.possibleValues,'title'));
+    // }
   }
 }
 

@@ -129,7 +129,7 @@ module.exports = {
     },
     getEntries: function () {
       let _this = this;
-      axios.get('program.json')
+      axios.get('/program.json')
         .then(response => {
           this.program = response.data.data;
             this.hideWhenScrolled = false;
