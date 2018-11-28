@@ -27,10 +27,6 @@ module.exports = {
       }
     ]
   },
-  babel: {
-    presets: ['es2015'],
-    plugins: ['transform-runtime']
-  },
   // /app/js/webpack.config.js
   plugins: [
       

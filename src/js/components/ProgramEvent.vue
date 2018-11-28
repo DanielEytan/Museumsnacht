@@ -4,9 +4,9 @@
     <div class="flex-container">
       <div class="time">
         <div  v-for="time in programevent.time">
-          <time v-if="time.type === 'setTimes'"> {{ time.start.date | formatDate }}<span v-if="time.duration.length"><br>(Dauer: {{ time.duration }})</span></time> 
+          <time v-if="time.type === 'setTimes'"> {{ time.start.date | formatDate }}<span v-if="time.duration && time.duration.length"><br>(Dauer: {{ time.duration }})</span></time> 
           <time v-if="time.type === 'continuous'"> {{ time.start.date | formatDate }} – {{ time.end.date | formatDate }}</time>
-          <time v-if="time.type === 'iterating'">  {{ time.start.date | formatDate }} – {{ time.end.date | formatDate }} <br>({{ time.frequency }}<span v-if="time.duration.length">, Dauer: {{ time.duration }}</span>)</time>
+          <time v-if="time.type === 'iterating'">  {{ time.start.date | formatDate }} – {{ time.end.date | formatDate }} <br>({{ time.frequency }}<span v-if="time.duration && time.duration.length">, Dauer: {{ time.duration }}</span>)</time>
         </div>
       </div>
       <div class="text">

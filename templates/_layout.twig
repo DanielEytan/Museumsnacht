@@ -31,14 +31,13 @@
 		</div>
 		{% include "_includes/header" %}
 		<div id="container" {% if mt is defined %}class="mt"{% endif %}>
+			<main id="content" role="main">
 
-		<main id="content" role="main">
-
-			{% block content %}
-			<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-			<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-			{% endblock %}
-		</main>
+				{% block content %}
+				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+				{% endblock %}
+			</main>
 		</div>
 		{% if lang is defined %}
 			{% if lang == "en" %}
@@ -49,7 +48,6 @@
 		{% else %}
 			{% include "_includes/footer" %}
 		{% endif %}
-	</div>
 	</div>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1n1fhLxcWGqlj1AUOBxinlfFn1idc4U" ></script>
 	<script type="text/javascript" src="{{ siteUrl }}/js/lodash.min.js"></script>

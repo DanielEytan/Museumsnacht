@@ -69,7 +69,7 @@
     <div v-if="calcNumberOfEvents() === 0 " class="empty" v-cloak>
 
       <p v-if="checkedFilters.length > 0">Diese Filterkombination ergibt keine Ergebnisse.<br>Passe deine Auswahl an.</p>
-      <p v-else>Es werden 201 Veranstaltungen geladen.</p>
+      <p v-else>Das vollständige Programm wird geladen.</p>
     </div>
 
 
