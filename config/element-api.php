@@ -17,10 +17,9 @@ return [
             'program.json' => function() {
                 return [
                     'elementType' => Entry::class,
-                    'cache' => false,
+                    'cache' => true,
                     'elementsPerPage' => 999,
                     'paginate' => false,
-
                     'criteria' => [
                         'section' => 'program',
                         'type' =>'institution', 
@@ -255,7 +254,7 @@ return [
 
         'programevent.json' => [
             'elementType' => Entry::class,
-            'cache' => false,
+            'cache' => true,
             'elementsPerPage' => 999,
             'paginate' => false,
             // 'limit' => 999,
