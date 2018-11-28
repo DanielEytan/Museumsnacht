@@ -3,7 +3,7 @@ window.axios = require('axios');
 window._ = require('lodash');
 
 //import
-// import Vue from 'vue'
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import ThemeList from './components/ThemeList.vue'
 // import InstitutionFilter from './components/InstitutionFilter.vue'
