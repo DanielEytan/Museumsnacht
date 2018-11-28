@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="ThemeList">
       <h1>My Entries</h1>
       <ul class="list-group">
@@ -22,7 +22,7 @@ module.exports = {
   methods: {
     getEntries () {
       let vm = this;
-      axios.get('themes.json')
+      axios.get('/themes.json')
         .then(response => {
           this.themes = response.data.data
         })
@@ -33,4 +33,4 @@ module.exports = {
 </script>
 
 <style lang="css" scoped>
-</style>
+</style> -->

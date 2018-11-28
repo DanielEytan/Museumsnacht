@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="InstitutionFilter">
       <h1>My Institutions</h1>
       <ul class="list-group">
@@ -55,4 +55,4 @@ module.exports = {
 </script>
 
 <style lang="css" scoped>
-</style>
+</style> -->
