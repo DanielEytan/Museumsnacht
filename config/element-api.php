@@ -334,5 +334,50 @@ return [
                 ];
             },
         ],
+
+/*
+************************************************************
+*
+*                        LOCATIONS
+*
+************************************************************
+*/
+
+    'locations.json' => [
+        'elementType' => Entry::class,
+        'cache' => true,
+            // 'paginate' => false,
+        'criteria' => [
+            'section' => 'program',
+            'type' => 'institution'
+        ],
+        'transformer' => function(Entry $entry) {
+            $photos = [];
+            foreach ($entry->programImg as $photo) {
+                $photos[] = $photo->url;
+            }
+            return [
+                'title' => $entry->title,
+                'map' => $entry->map,
+                // 'lat' => ($entry->map ? $entry->map->lat : ''),
+                // 'lng' => ($entry->map ? $entry->map->lng : ''),
+                'number' => $entry->number,
+                'url' => $entry->url,
+                'address' => $entry->address,
+                'journey' => (string) $entry->journey,
+                'advanceSale' => $entry->advanceSale,
+                'accessibility' => $entry->accessibility,
+                'photos' => $photos,
+                
+                'shuttleLine' => array_map( function (Category $category) {
+                    return [
+                        'title' => $category->title,
+                        'color' => $category->color
+                    ];
+                }, $entry->shuttleLine->find()),
+            ];
+        },
+    ],
+
     ]
 ];
