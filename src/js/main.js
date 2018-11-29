@@ -100,12 +100,11 @@ var vueApp = new Vue({
      beforeMount(){
       this.stateContrast(),
       this.time()
-      // this.ticketToggle()
+      this.resetSavedProgram();
     },
     mounted(){
       window.addEventListener("scroll", this.menuScroll);
       this.ifReady();
-     
     },
     methods: {
       ifReady: function() {
@@ -166,6 +165,15 @@ var vueApp = new Vue({
               default:
                   break;
           }
+        },
+        resetSavedProgram: function () {
+          // Delete old IDs. IMPORTANT: Set 'smallestDeletedId' Variable!
+          var smallestDeletedId = 1310;
+          var idListFromLocalStorage = JSON.parse(localStorage.getItem('programId'));
+          var filteredIdList = _.filter(idListFromLocalStorage, function (element) {
+            return element > smallestDeletedId ? element : false;
+          });
+          localStorage.setItem("programId", JSON.stringify(filteredIdList));
         },
         toggleContrast: function() {
             var contrastState = localStorage.getItem('contrast')

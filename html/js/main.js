@@ -53,6 +53,10 @@
 
 	'use strict';
 
+	var _stringify = __webpack_require__(82);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
 	var _vue = __webpack_require__(2);
 
 	var _vue2 = _interopRequireDefault(_vue);
@@ -229,7 +233,7 @@
 	  },
 	  beforeMount: function beforeMount() {
 	    this.stateContrast(), this.time();
-	    // this.ticketToggle()
+	    this.resetSavedProgram();
 	  },
 	  mounted: function mounted() {
 	    window.addEventListener("scroll", this.menuScroll);
@@ -293,6 +297,15 @@
 	        default:
 	          break;
 	      }
+	    },
+	    resetSavedProgram: function resetSavedProgram() {
+	      // Delete old IDs. IMPORTANT: Set 'smallestDeletedId' Variable!
+	      var smallestDeletedId = 1310;
+	      var idListFromLocalStorage = JSON.parse(localStorage.getItem('programId'));
+	      var filteredIdList = _.filter(idListFromLocalStorage, function (element) {
+	        return element > smallestDeletedId ? element : false;
+	      });
+	      localStorage.setItem("programId", (0, _stringify2.default)(filteredIdList));
 	    },
 	    toggleContrast: function toggleContrast() {
 	      var contrastState = localStorage.getItem('contrast');
