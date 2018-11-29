@@ -25,7 +25,6 @@
     this.initEventBus();
   },
   methods: {
-
     initEventBus: function () {
         // Listen for the i-got-clicked event and its payload.
         var _this = this;
