@@ -4,9 +4,9 @@
 			<h1>Museen</h1>
 			<nav>
 					<ul>
-					<li v-on:click="toggleGridView" v-bind:class="{ active: gridView }"><i>▦</i> <span>Raster</span></li>
-					<li v-on:click="toggleListView" v-bind:class="{ active: listView }"><i>☷ <span>Liste</span></i></li>
-					<li v-on:click="toggleMapView" v-bind:class="{ active: mapView }"><i>📌 <span>Karte</span></i></li>
+					<li v-on:click="routeToHashes('#raster')" v-bind:class="{ active: gridView }"><i>▦</i> <span>Raster</span></li>
+					<li v-on:click="routeToHashes('#liste')" v-bind:class="{ active: listView }"><i>☷ <span>Liste</span></i></li>
+					<li v-on:click="routeToHashes('#karte')" v-bind:class="{ active: mapView }"><i>📌 <span>Karte</span></i></li>
 				</ul>
 			</nav>
 		</header>
@@ -99,10 +99,32 @@ module.exports = {
 
 		}
 	},
+	watch: {
+    $route (to, from){
+    	var hash = to.hash;
+    	this.routeToHashes(hash);
+    }
+	},
 	mounted () {
 		this.getEntries();
+		this.routeToHashes(this.$route.hash);
 	},
 	methods: {
+		routeToHashes(hash) {
+			this.$router.push({hash: hash})
+
+			switch (hash) {
+				case '#karte':
+					this.toggleMapView();
+					break;
+				case '#liste':
+					this.toggleListView();
+					break;
+				case '#raster':
+					this.toggleGridView();
+					break;
+			}
+		},
 		toggleListView () {
 			this.listView = !this.listView;
 			if (this.listView = true) {

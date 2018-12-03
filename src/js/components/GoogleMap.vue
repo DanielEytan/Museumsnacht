@@ -1,11 +1,16 @@
 <template>
   <div>
     <!-- <div class="selected-institution" v-bind:class="{ closed: institutInfo }"> -->
-    <div class="selected-institution" v-bind:class="foo">
+    <div v-if="!this.isGeolocationAllowed">
+      <div class="allow-geolocation" v-on:click="allowGeolocation(true)">
+        <strong>Eigenen Standort anzeigen</strong>
+      </div>
+    </div>
+    <div class="selected-institution" v-bind:class="listState">
       <!-- <div class="dismiss" v-on:click="toggleInstitutInfo"></div> -->
       <!-- <div class="mobile-toggle" v-on:click="toggleState()"></div> -->
       <aside class="institutions--overview_child" v-for="entry in institutionsData" v-if="entry.number == inst">
-        <div class="dismiss"  v-if="foo == 'selected'" v-on:click="inst = 0; closeList(); zoomOut()"><i>ⓧ</i></div>
+        <div class="dismiss"  v-if="listState == 'selected'" v-on:click="dismissSingleInstutution(); "><i>ⓧ</i></div>
         <div>
           <button v-on:click="inst = 0; zoomOut()">← zur Übersicht</button>
           <div>
@@ -33,14 +38,9 @@
           </div>
         </div>
       </aside>
-      <aside v-if="!this.isGeolocationAllowed">
-        <div class="allow-geolocation" v-on:click="allowGeolocation()">
-          Eigener Standort anzeigen
-        </div>
-      </aside>
       <aside v-if="inst == 0">
-        <div class="get-list-toggle" v-show="foo == 'closed'" v-on:click="openList()"><strong>Liste Museen </strong> <i>☰</i></div>
-        <div class="dismiss" v-if="foo == 'show-list'" v-on:click="closeList()"><strong>Liste schliessen</strong> <i>ⓧ</i></div>
+        <div class="get-list-toggle" v-show="listState === 'closed' || listState === 'selected'" v-on:click="openList()"><strong>Liste Museen </strong> <i>☰</i></div>
+        <div class="dismiss" v-if="listState == 'show-list'" v-on:click="closeList()"><strong>Liste schliessen</strong> <i>ⓧ</i></div>
         <div>
 
           <!-- <p>Klicken Sie auf einen der Marker auf der Karte oder wählen Sie eine Institution aus der Liste aus.</p><br><br> -->
@@ -82,7 +82,7 @@ export default {
      inst: "0",
      institutInfo: true,
      mapTop: false,
-     foo: "closed",
+     listState: "closed",
      center: new google.maps.LatLng(47.55959860000001,7.588576099999955),
      isGeolocationAllowed: false,
    }
@@ -298,10 +298,15 @@ export default {
 methods: {
 
   openList () {
-    this.foo = "show-list";
+    this.listState = "show-list";
   },
   closeList () {
-    this.foo = "closed";
+    this.listState = "closed";
+  },
+  dismissSingleInstutution () {
+    this.inst = 0; 
+    this.closeList(); 
+    this.zoomOut();
   },
 
   /*
@@ -312,15 +317,12 @@ methods: {
   ************************************************************
   */
 
-  // isGeolocationAllowed() {
-  //   return localStorage.getItem('allowGeolocation');
-  // },
-  
-  allowGeolocation() {
+  allowGeolocation(center) {
       localStorage.setItem('allowGeolocation', true);
       this.isGeolocationAllowed = true;
 
       if(this.isMobile()) {
+
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -334,14 +336,19 @@ methods: {
 
             if(!document.getElementById('center-geo')) {
               var centerControlDiv = document.createElement('div');
-              var centerControl = new this.CenterControl(centerControlDiv, this.map, pos);
 
+              var centerControl = new this.CenterControl(centerControlDiv, this.map);
 
               centerControlDiv.index = 1;
               this.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(centerControlDiv);
+              centerControl.addEventListener('click', function() {
+                this.map.setCenter(pos);
+              }.bind(this));
             }
 
-            this.map.setCenter(pos);
+            if(center) {
+              this.map.setCenter(pos);
+            }
 
           }.bind(this), function() {
             this.handleLocationError(true, null, this.map.getCenter());
@@ -400,10 +407,14 @@ methods: {
     controlText.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><style type="text/css">.st0{fill:none;}.st1{fill:#666666;}</style><path class="st0" d="M0 0h24v24H0z" fill="none"/><path class="st1" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>';
     controlUI.appendChild(controlText);
 
-    // Setup the click event listeners: simply set the map to Chicago.
-    controlUI.addEventListener('click', function() {
-      map.setCenter(pos);
-    });
+    return controlUI;
+
+    // Setup the click event listeners: simply set the map to Position.
+    // if(pos) {
+    //   controlUI.addEventListener('click', function() {
+    //     map.setCenter(pos);
+    //   });
+    // }
   },
 
   /*
@@ -419,12 +430,13 @@ methods: {
     return check;
   },
 
- //  toggleInstitutInfo () {
- //   this.institutInfo = !this.institutInfo;
- // },
- scrollTop () {
-  this.$el.querySelector("#multiMap").scrollTop;
+   //  toggleInstitutInfo () {
+   //   this.institutInfo = !this.institutInfo;
+   // },
+  scrollTop () {
+    this.$el.querySelector("#multiMap").scrollTop;
   },
+
   getEntries () {
     axios.get('../locations.json')
     .then(response => {
@@ -449,52 +461,71 @@ methods: {
       //enable geolocation if allowed
 
       if(this.isGeolocationAllowed) {
-        this.allowGeolocation();
+        this.allowGeolocation(false);
       }
     });
   },
+
   selctedInst () {
-   var _this = this;
-   var inst = _this.inst;
-   var map = _this.map;
-   _this.mapTop = true;
-    this.foo = "selected";
+    var _this = this;
+    var inst = _this.inst;
+    var map = _this.map;
+    _this.mapTop = true;
+    this.listState = "selected";
 
-   this.$el.querySelector("#multiMap").scrollTop;
+    this.$el.querySelector("#multiMap").scrollTop;
 
-
-   _this.markerCoordinates.forEach(function (coord) {
-    var number = coord.number;
-    if (number == inst) {
-     map.setCenter(new google.maps.LatLng(coord.latitude, coord.longitude));
-     map.setZoom(18)
-
-   }
-  });
+    _this.markerCoordinates.forEach(function (coord) {
+      var number = coord.number;
+      if (number == inst) {
+        map.setCenter(new google.maps.LatLng(coord.latitude, coord.longitude));
+        map.setZoom(18)
+      }
+    });
   },
+
   zoomOut () {
-   var _this = this;
-   var inst = _this.inst;
-   var map = _this.map
-   map.setZoom(12)
-   map.setCenter(new google.maps.LatLng(47.55959860000001,7.588576099999955));
+    var _this = this;
+    var inst = _this.inst;
+    var map = _this.map
+    map.setZoom(12)
+    map.setCenter(new google.maps.LatLng(47.55959860000001,7.588576099999955));
   },
+
+  /*
+  ************************************************************
+  *
+  *            CEATE MAP
+  *
+  ************************************************************
+  */
+
   createMap () {
     var _this = this;
     var inst = _this.inst;
-    _this.markerCoordinates.forEach(function (coord) {
-      var colors = coord.linecolor;
 
-      // console.log(colors);
+    // console.log(_this.markerCoordinates)
+
+    _this.markerCoordinates.forEach(function (coord, index) {
+      
+      // console.log(coord.latitude, coord.longitude)
+
+      var colors = coord.linecolor;
+      var color;
+
       if (colors.length > 2 ) {
-        var color = '#000000';
+        color = '#000000';
       } else {
-        var color = colors[0].color;
+        color = colors[0].color;
       }
 
       var number = coord.number;
+
+      // var scale = 15;
       var scale = 15;
+      
       const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+
       const marker = new google.maps.Marker({ 
         animation: google.maps.Animation.DROP,
         position,
@@ -509,26 +540,30 @@ methods: {
           scale: scale,
           fillColor: color,
           fillOpacity: 1,
-          strokeColor: color,
-          strokeWeight: 1
+          // strokeColor: "gray",
+          strokeColor: 'white',
+          strokeWeight: 1,
         },
         number: coord.number,
         url: coord.url,
         map: _this.map,
+        // optimized: false,
+        zIndex: index,
       });
+
       marker.addListener('click', toggleBounce);
+
       google.maps.event.addListener(marker, "click", function(evt) {
-       var number = this.number;
-       var instNumber = _this.inst;
-       var map = this.map;
-       _this.inst = number;
-       _this.mapTop = true;
-        _this.foo = "selected";
+        var number = this.number;
+        var instNumber = _this.inst;
+        var map = this.map;
+        _this.inst = number;
+        _this.mapTop = true;
+        _this.listState = "selected";
 
-
-       map.setZoom(18);
-       map.setCenter(marker.getPosition());
-       // this.institutInfo = true;
+        map.setZoom(18);
+        map.setCenter(marker.getPosition());
+        // this.institutInfo = true;
       });
       google.maps.event.addListener(marker, "mouseover", function(evt) {
        var icon = this.getIcon();
@@ -544,6 +579,7 @@ methods: {
         var number = this.number;
 
       });
+
       function toggleBounce() {
        if (marker.getAnimation() !== null) {
           marker.setAnimation(null);

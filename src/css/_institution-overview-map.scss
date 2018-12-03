@@ -40,6 +40,9 @@
 	.google-map {
 		height: 60vh;
 	}
+	.allow-geolocation {
+		display: none;
+	}
 	@media screen and (max-width: $bp1) {
 		.dismiss i, .get-list-toggle i {
 			font-size: 2em;	
@@ -49,7 +52,9 @@
 				height: 100%;
 				aside {
 					.get-list-toggle {
-						display: block;
+						// display: block;
+						display: flex;
+						align-items: center;
 					}
 				}
 				.selected-institution {
@@ -75,7 +80,7 @@
 					}
 					.get-list-toggle {
 						position: relative;
-						height: 600px;
+						// height: 600px;
 						i {
 							position: absolute;
 							right: 0;
@@ -85,18 +90,20 @@
 						// height: 500px;
 						// padding-bottom: 44px;
 						position: relative;
-						height: 60px;
+						// height: 60px;
 						overflow: hidden;
 						// top: calc(100vh - 60px;);
 						// bottom: 40px;
 						ul.institutions-list {
 							opacity: 0;
+							display: none;
 						}
 
 						.get-list-toggle {
 							padding-top: .5em;
 							i {
 								width: 19px;
+								height: 17px;
 								font-size: 1.5em;
 							}
 						}
@@ -156,6 +163,15 @@
 						margin-top: 1em;
 						// height: 100%;
 					}
+
+			.allow-geolocation {
+				display: flex;
+				align-items: center;
+				padding: .5em 15px;
+				border-top: 1px solid white;
+				strong {
+				}
+			}
 		}
 	@media only screen and (max-width: 500px) {
 

@@ -4,7 +4,6 @@ window._ = require('lodash');
 
 //import
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 // import ThemeList from './components/ThemeList.vue'
 // import InstitutionFilter from './components/InstitutionFilter.vue'
 import CheckboxFilter from './components/CheckboxFilter.vue'
@@ -37,15 +36,22 @@ Vue.use(VueClipboard);
 import VueScrollTo from 'vue-scrollto'
 Vue.use(VueScrollTo);
 
+import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
-// import VueMasonryPlugin from 'masonry.min.js';
-// Vue.use(VueMasonryPlugin)
-import journalOverview from './components/journalOverview.vue'
+const routes = [
+  // { path: '/museen#karte', component: institutions, props: {view:'map'} },
+]
+const router = new VueRouter({
+  routes, // short for `routes: routes`
+  mode: 'history',
+})
 
+import journalOverview from './components/journalOverview.vue'
 
 //vue main app instance
 var vueApp = new Vue({
+    router,
     delimiters: ['${', '}'],
     el: '#vue-app',
     components: {
@@ -268,8 +274,6 @@ var vueApp = new Vue({
           }
         },
     },
-
-    
 });
 
 Vue.filter('formatDate', function(value) {
