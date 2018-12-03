@@ -1264,6 +1264,9 @@ footer#footer {
 .institutions--overview .google-map {
   height: 60vh; }
 
+.institutions--overview .allow-geolocation {
+  display: none; }
+
 @media screen and (max-width: 768px) {
   .institutions--overview .dismiss i, .institutions--overview .get-list-toggle i {
     font-size: 2em;
@@ -1271,7 +1274,10 @@ footer#footer {
   .institutions--overview .map-view {
     height: 100%; }
     .institutions--overview .map-view aside .get-list-toggle {
-      display: block; }
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center; }
     .institutions--overview .map-view .selected-institution {
       position: fixed;
       bottom: 0;
@@ -1290,21 +1296,21 @@ footer#footer {
       .institutions--overview .map-view .selected-institution aside {
         position: relative; }
       .institutions--overview .map-view .selected-institution .get-list-toggle {
-        position: relative;
-        height: 600px; }
+        position: relative; }
         .institutions--overview .map-view .selected-institution .get-list-toggle i {
           position: absolute;
           right: 0; }
       .institutions--overview .map-view .selected-institution.closed {
         position: relative;
-        height: 60px;
         overflow: hidden; }
         .institutions--overview .map-view .selected-institution.closed ul.institutions-list {
-          opacity: 0; }
+          opacity: 0;
+          display: none; }
         .institutions--overview .map-view .selected-institution.closed .get-list-toggle {
           padding-top: .5em; }
           .institutions--overview .map-view .selected-institution.closed .get-list-toggle i {
             width: 19px;
+            height: 17px;
             font-size: 1.5em; }
       .institutions--overview .map-view .selected-institution.show-list {
         overflow: scroll;
@@ -1340,7 +1346,14 @@ footer#footer {
         margin-bottom: 1em;
         margin-top: 2px; }
   .institutions--overview .institutions-list {
-    margin-top: 1em; } }
+    margin-top: 1em; }
+  .institutions--overview .allow-geolocation {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .5em 15px;
+    border-top: 1px solid white; } }
 
 @media only screen and (max-width: 500px) {
   .institutions--overview .map-view .selected-institution.closed {
