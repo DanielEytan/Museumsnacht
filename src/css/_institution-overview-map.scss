@@ -167,9 +167,14 @@
 			.allow-geolocation {
 				display: flex;
 				align-items: center;
+				justify-content: space-between;
 				padding: .5em 15px;
 				border-top: 1px solid white;
 				strong {
+				}
+
+				span.marker-icon {
+					font-size: 20px;
 				}
 			}
 		}

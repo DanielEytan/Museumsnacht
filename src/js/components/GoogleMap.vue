@@ -3,7 +3,7 @@
     <!-- <div class="selected-institution" v-bind:class="{ closed: institutInfo }"> -->
     <div v-if="!this.isGeolocationAllowed">
       <div class="allow-geolocation" v-on:click="allowGeolocation(true)">
-        <strong>Eigenen Standort anzeigen</strong>
+        <strong>Meinen Standort anzeigen</strong> <span class="marker-icon">📌</span>
       </div>
     </div>
     <div class="selected-institution" v-bind:class="listState">

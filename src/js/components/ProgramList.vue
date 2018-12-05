@@ -79,6 +79,7 @@
 <script>
 import ProgramEntry from './ProgramEntry.vue';
 import { EventBus } from '../event-bus.js';
+import VueScrollTo from 'vue-scrollto';
 
 module.exports = {
   name: 'programlist',

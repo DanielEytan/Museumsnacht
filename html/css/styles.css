@@ -1352,8 +1352,12 @@ footer#footer {
     display: flex;
     -ms-flex-align: center;
     align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     padding: .5em 15px;
-    border-top: 1px solid white; } }
+    border-top: 1px solid white; }
+    .institutions--overview .allow-geolocation span.marker-icon {
+      font-size: 20px; } }
 
 @media only screen and (max-width: 500px) {
   .institutions--overview .map-view .selected-institution.closed {
