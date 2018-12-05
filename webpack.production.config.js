@@ -43,7 +43,7 @@ module.exports = {
   resolve: {
     modulesDirectories: ['./src/js', 'node_modules'],
     alias: {
-      'vue$': 'vue/dist/vue.common.js'
+      'vue$': 'vue/dist/vue.min.js'
     }
   }
 }
